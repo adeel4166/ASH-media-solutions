@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_SITE_NAME": "ASH Media Solutions",
+    "NEXT_PUBLIC_BASE_URL": "https://ash-media-solutions.vercel.app"
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "regions": ["sin1"],
+  "github": {
+    "enabled": true,
+    "autoJobCancelation": true
+  }
+}
