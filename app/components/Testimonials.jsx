@@ -68,13 +68,13 @@ export default function Testimonials() {
   );
 
   return (
-    <section className="pt-20 pb-0 bg-[#071414] text-white relative overflow-hidden">
+    <section className="pt-20 pb-10 bg-[#071414] text-white relative overflow-hidden">
       {/* ✅ Heading */}
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-[#00D8FE]">
           Our Testimonials
         </h2>
-        <p className="text-gray-400 mt-2">
+        <p className="text-gray-400 mt-2 px-4">
           Hear from our valued clients about their experience with{" "}
           <span className="text-[#00D8FE] font-medium">
             ASH Media Solutions
@@ -82,45 +82,73 @@ export default function Testimonials() {
         </p>
       </div>
 
-      {/* ✅ Testimonials Row */}
-      <div className="max-w-7xl mx-auto overflow-hidden">
-        <motion.div
-          key={startIndex}
-          initial={{ x: 0 }}
-          animate={{ x: "-33.333%" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="flex gap-8"
-        >
-          {[...visible, testimonials[(startIndex + itemsToShow) % testimonials.length]].map(
-            (t, i) => (
-              <motion.div
-                key={i}
-                className="flex-shrink-0 w-1/3 bg-[#0A0A0A]/80 border border-[#00444F]/30 
-                           rounded-3xl p-8 text-center transition-transform duration-300 
-                           hover:scale-[1.02]"
-              >
-                {/* Stars */}
-                <div className="flex justify-center mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <FaStar key={j} className="text-yellow-400 text-lg" />
-                  ))}
-                </div>
+      {/* ✅ Responsive Layout */}
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="hidden md:flex overflow-hidden">
+          <motion.div
+            key={startIndex}
+            initial={{ x: 0 }}
+            animate={{ x: "-33.333%" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="flex gap-8"
+          >
+            {[...visible, testimonials[(startIndex + itemsToShow) % testimonials.length]].map(
+              (t, i) => (
+                <motion.div
+                  key={i}
+                  className="flex-shrink-0 w-1/3 bg-[#0A0A0A]/80 border border-[#00444F]/30 
+                            rounded-3xl p-8 text-center transition-transform duration-300 
+                            hover:scale-[1.02]"
+                >
+                  {/* Stars */}
+                  <div className="flex justify-center mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <FaStar key={j} className="text-yellow-400 text-lg" />
+                    ))}
+                  </div>
 
-                {/* Review */}
-                <p className="text-gray-300 italic leading-relaxed mb-4">
-                  “{t.review}”
-                </p>
+                  {/* Review */}
+                  <p className="text-gray-300 italic leading-relaxed mb-4">
+                    “{t.review}”
+                  </p>
 
-                {/* Name */}
-                <h3 className="text-[#00D8FE] font-semibold text-lg">{t.name}</h3>
-              </motion.div>
-            )
-          )}
-        </motion.div>
+                  {/* Name */}
+                  <h3 className="text-[#00D8FE] font-semibold text-lg">
+                    {t.name}
+                  </h3>
+                </motion.div>
+              )
+            )}
+          </motion.div>
+        </div>
+
+        {/* ✅ Mobile Layout */}
+        <div className="md:hidden flex flex-col gap-6">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0A]/80 border border-[#00444F]/30 rounded-3xl p-6 text-center"
+            >
+              <div className="flex justify-center mb-3">
+                {[...Array(5)].map((_, j) => (
+                  <FaStar key={j} className="text-yellow-400 text-base" />
+                ))}
+              </div>
+              <p className="text-gray-300 italic leading-relaxed mb-3 text-sm">
+                “{t.review}”
+              </p>
+              <h3 className="text-[#00D8FE] font-semibold">{t.name}</h3>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       {/* ✅ Navigation Dots */}
-      <div className="flex justify-center gap-2 mt-10">
+      <div className="hidden md:flex justify-center gap-2 mt-10">
         {testimonials.map((_, i) => (
           <div
             key={i}
@@ -132,7 +160,7 @@ export default function Testimonials() {
         ))}
       </div>
 
-      {/* ✅ Divider Line (clean + thin) */}
+      {/* ✅ Divider Line */}
       <div className="mt-12 h-[1px] w-full bg-[#00D8FE]/10"></div>
     </section>
   );
