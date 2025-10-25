@@ -1,79 +1,171 @@
+"use client";
+import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
-
-export const metadata = {
-  title: "About | ASH MEDIA SOLUTIONS",
-  description: "Learn more about ASH MEDIA SOLUTIONS — your creative tech partner in design, development, and innovation.",
-};
+import Footer from "@/app/components/Footer";
+import { useEffect, useRef, useState } from "react";
 
 export default function AboutPage() {
+  // 👇 Counter animation hook
+  const Counter = ({ target, label, delay = 0 }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+    const [value, setValue] = useState(0);
+
+    useEffect(() => {
+      if (!isInView) return;
+      let start = 0;
+      const duration = 1500;
+      const stepTime = 20;
+      const step = target / (duration / stepTime);
+
+      const counter = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          start = target;
+          clearInterval(counter);
+        }
+        setValue(Math.floor(start));
+      }, stepTime);
+
+      return () => clearInterval(counter);
+    }, [isInView, target]);
+
+    return (
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay }}
+        viewport={{ once: true }}
+        className="m-4 text-center"
+      >
+        <h3 className="text-4xl font-bold text-[#00D8FE]">
+          {value}
+          <span className="text-[#00D8FE]">+</span>
+        </h3>
+        <p className="text-gray-300 mt-2 font-medium">{label}</p>
+      </motion.div>
+    );
+  };
+
   return (
-    <>
+    <main className="bg-[#071414] text-gray-300 transition-colors duration-500 min-h-screen font-[Poppins]">
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section className="relative py-28 text-center bg-gradient-to-b from-[#000000] via-[#00444F] to-[#000000]">
-        <h1 className="hero-title text-6xl sm:text-7xl font-bold text-[#00D8FE]">
-          About Us
-        </h1>
-        <p className="mt-6 text-gray-300 text-lg max-w-2xl mx-auto font-[Poppins]">
-          Discover our journey, mission, and passion for creating digital experiences that truly make an impact.
-        </p>
-      </section>
-
-      {/* MAIN CONTENT */}
-      <section className="py-20 bg-[#000000] text-center border-t border-[#00444F]/40">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-3xl font-bold text-[#00D8FE] mb-8">Our Mission</h2>
-          <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto text-lg">
-            At <span className="text-[#00D8FE] font-semibold">ASH MEDIA SOLUTIONS</span>, 
-            we aim to redefine creativity and innovation in Pakistan’s digital landscape.  
-            From stunning web designs to powerful marketing campaigns, 
-            we help brands communicate their message clearly and effectively.
-          </p>
-
-          <div className="mt-20 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-            {[
-              {
-                title: "🚀 Our Vision",
-                desc: "To empower every business with a strong online presence and cutting-edge digital solutions.",
-              },
-              {
-                title: "💡 Our Expertise",
-                desc: "From custom web apps to full-scale brand strategies — we bring creativity and technology together.",
-              },
-              {
-                title: "🤝 Our Promise",
-                desc: "We focus on trust, transparency, and long-term success for our clients — not just quick results.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="p-6 rounded-2xl bg-[#00444F]/30 border border-[#00444F]/40 hover:border-[#00D8FE]/60 transition"
-              >
-                <h3 className="text-xl font-semibold text-[#00D8FE] mb-3">{item.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA SECTION */}
-      <section className="py-16 bg-[#00444F]/30 border-t border-[#00D8FE]/20 text-center">
-        <h2 className="text-3xl font-bold text-[#00D8FE] mb-4">
-          Let’s Build Something Amazing Together
-        </h2>
-        <p className="text-gray-300 mb-8">
-          Ready to elevate your brand with us? Let’s turn your vision into reality.
-        </p>
-        <a
-          href="/contact"
-          className="inline-block px-8 py-3 rounded-xl bg-gradient-to-r from-[#00444F] to-[#00D8FE] 
-          text-white font-semibold hover:scale-105 transition-transform"
+      {/* 🌄 HERO SECTION */}
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="/about/hero.jpg"
+          alt="About ASH Media Solutions"
+          fill
+          className="object-cover opacity-60"
+          priority
+        />
+        <div className="absolute inset-0 bg-[#071414]/80" />
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-5xl md:text-6xl font-[Amsterdam4] text-[#00D8FE]"
         >
-          Contact Us
-        </a>
+          About Us
+        </motion.h1>
       </section>
-    </>
+
+      {/* 💼 BUSINESS GOALS SECTION */}
+      <section className="max-w-7xl mx-auto py-24 px-6 grid md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-[Amsterdam4] text-[#00D8FE] mb-5">
+            Realize Your Business Goals for Maximum Profit
+          </h2>
+          <p className="text-gray-400 leading-relaxed">
+            We develop and execute strategic digital marketing plans aligned
+            with your business goals — boosting growth, improving efficiency,
+            and maximizing ROI.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="relative rounded-3xl overflow-hidden"
+        >
+          <Image
+            src="/about/team.jpg"
+            alt="Team collaboration"
+            width={700}
+            height={500}
+            className="object-cover w-full h-full rounded-3xl"
+          />
+        </motion.div>
+      </section>
+
+      {/* 📊 COUNTER SECTION (Animated) */}
+      <section className="bg-[#041010] border-t border-[#00444F]/30 py-16 flex flex-wrap justify-around text-center">
+        <Counter target={140} label="Happy Customers" />
+        <Counter target={150} label="Trusted Users" delay={0.1} />
+        <Counter target={300} label="Positive Reviews" delay={0.2} />
+        <Counter target={10} label="Awards Gained" delay={0.3} />
+      </section>
+
+      {/* 🎥 WHY WE’RE BEST SECTION */}
+      <section className="max-w-7xl mx-auto py-24 px-6 grid md:grid-cols-2 gap-12 items-center">
+        {/* LEFT — IMAGE OR VIDEO */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="relative rounded-3xl overflow-hidden"
+        >
+          <Image
+            src="/about/social.jpg"
+            alt="Digital Marketing Agency"
+            width={700}
+            height={500}
+            className="object-cover w-full h-full rounded-3xl"
+          />
+          {/* Play Button */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <button
+              className="w-16 h-16 bg-[#00D8FE] text-black text-3xl rounded-full 
+                         flex items-center justify-center"
+            >
+              ▶
+            </button>
+          </motion.div>
+        </motion.div>
+
+        {/* RIGHT — TEXT */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl font-[Amsterdam4] text-[#00D8FE] mb-5">
+            Why We’re the Best Digital Marketing Agency in Lahore
+          </h2>
+          <p className="text-gray-400 leading-relaxed">
+            We stand out by combining innovative digital marketing strategies,
+            data-driven insights, and personalized campaigns — delivering
+            unmatched ROI and sustainable brand growth.
+          </p>
+        </motion.div>
+      </section>
+
+      <Footer />
+    </main>
   );
 }

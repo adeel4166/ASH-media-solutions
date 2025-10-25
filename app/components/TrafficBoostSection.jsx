@@ -1,5 +1,5 @@
 "use client";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaBullhorn, FaChartLine, FaPhoneAlt } from "react-icons/fa";
 
@@ -11,9 +11,9 @@ function AnimatedCircle({ endValue }) {
   useEffect(() => {
     if (isInView) {
       let start = 0;
-      const duration = 1500; // total animation time (ms)
+      const duration = 1500;
       const stepTime = 20;
-      const step = (endValue / (duration / stepTime));
+      const step = endValue / (duration / stepTime);
 
       const counter = setInterval(() => {
         start += step;
@@ -28,19 +28,9 @@ function AnimatedCircle({ endValue }) {
 
   return (
     <div ref={ref} className="relative w-24 h-24 mx-auto">
-      {/* Outer Circle Border */}
-      <svg
-        className="w-24 h-24 rotate-[-90deg]"
-        viewBox="0 0 100 100"
-      >
-        <circle
-          cx="50"
-          cy="50"
-          r="45"
-          stroke="#0F3A3E"
-          strokeWidth="10"
-          fill="none"
-        />
+      {/* Base Circle */}
+      <svg className="w-24 h-24 rotate-[-90deg]" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="#0E2B2D" strokeWidth="10" fill="none" />
         <motion.circle
           cx="50"
           cy="50"
@@ -55,7 +45,7 @@ function AnimatedCircle({ endValue }) {
         />
       </svg>
 
-      {/* Percentage Text */}
+      {/* Percentage */}
       <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-[#00D8FE]">
         {value}%
       </div>
@@ -65,29 +55,26 @@ function AnimatedCircle({ endValue }) {
 
 export default function TrafficBoostSection() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden bg-[#000] text-white">
-      {/* Solid Background */}
-      <div className="absolute inset-0 bg-[#001B1D] opacity-90 -z-10" />
-
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
-        {/* ✅ LEFT SIDE — Text + Animated Stats */}
+    <section className="relative py-24 px-6 overflow-hidden bg-[#071414] text-white">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        {/* ✅ LEFT SIDE */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#00D8FE] mb-5 leading-tight">
-            Generate 100% Traffic<br />On Your Website
+          <h2 className="text-4xl md:text-5xl font-bold text-[#00D8FE] mb-6 leading-tight">
+            Generate 100% Traffic <br /> On Your Website
           </h2>
 
-          <p className="text-gray-300 text-lg leading-relaxed mb-10">
+          <p className="text-gray-300 text-lg leading-relaxed mb-12">
             We implement data-driven digital marketing strategies to drive consistent traffic,
             boost engagement, and maximize your brand’s visibility across Pakistan.
           </p>
 
-          {/* Animated Stat Circles */}
-          <div className="flex flex-wrap gap-10 mb-10 justify-start md:justify-start">
+          {/* Animated Circles */}
+          <div className="flex flex-wrap gap-10 mb-12">
             <div className="text-center">
               <AnimatedCircle endValue={95} />
               <p className="mt-3 text-gray-400 font-medium">Client Satisfied</p>
@@ -99,13 +86,11 @@ export default function TrafficBoostSection() {
             </div>
           </div>
 
-          {/* Buttons */}
+          {/* Contact Row */}
           <div className="flex flex-wrap items-center gap-6">
             <a
               href="/contact"
-              className="px-8 py-3 rounded-full bg-[#00D8FE] text-black font-semibold 
-                         hover:bg-[#00bfe4] shadow-[0_0_20px_#00D8FE60] hover:shadow-[0_0_35px_#00D8FEA0] 
-                         transition-all duration-300"
+              className="px-8 py-3 rounded-full bg-[#00D8FE] text-black font-semibold hover:bg-[#00bfe4] transition-all duration-300"
             >
               Contact Us Now
             </a>
@@ -122,19 +107,19 @@ export default function TrafficBoostSection() {
           </div>
         </motion.div>
 
-        {/* ✅ RIGHT SIDE — Benefits Card */}
+        {/* ✅ RIGHT SIDE */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-[#0a0a0a] rounded-3xl border border-[#00444F]/50 shadow-lg p-10"
+          className="bg-[#0B1A1A] rounded-3xl border border-[#00444F]/40 p-10"
         >
-          <h3 className="text-2xl font-bold text-[#00D8FE] mb-6">Our Benefits</h3>
+          <h3 className="text-2xl font-bold text-[#00D8FE] mb-8">Our Benefits</h3>
 
           <div className="space-y-8">
             <div className="flex items-start gap-5">
-              <div className="bg-[#00D8FE] w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_15px_#00D8FE70] flex-shrink-0">
+              <div className="bg-[#00D8FE] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                 <FaBullhorn className="text-black text-lg" />
               </div>
               <div>
@@ -148,7 +133,7 @@ export default function TrafficBoostSection() {
             </div>
 
             <div className="flex items-start gap-5">
-              <div className="bg-[#00D8FE] w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_15px_#00D8FE70] flex-shrink-0">
+              <div className="bg-[#00D8FE] w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                 <FaChartLine className="text-black text-lg" />
               </div>
               <div>

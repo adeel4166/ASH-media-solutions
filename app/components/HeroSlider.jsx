@@ -10,17 +10,15 @@ export default function HeroSlider() {
 
   const [index, setIndex] = useState(0);
   const intervalRef = useRef(null);
-  const delay = 3000; // ⏱ 3 seconds
+  const delay = 4000; // ⏱ Slide change every 4 seconds
 
-  // Start autoplay loop
   const start = () => {
     if (intervalRef.current) return;
     intervalRef.current = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length); // 🔁 continuous loop
+      setIndex((prev) => (prev + 1) % slides.length);
     }, delay);
   };
 
-  // Stop autoplay when hovering
   const stop = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = null;
@@ -33,11 +31,14 @@ export default function HeroSlider() {
 
   return (
     <section
-      className="relative w-full h-[70vh] md:h-[90vh] overflow-hidden bg-black"
+      className="relative w-full h-[70vh] md:h-[90vh] overflow-hidden
+                 bg-white dark:bg-[#0a1818]
+                 text-gray-900 dark:text-white
+                 transition-colors duration-500"
       onMouseEnter={stop}
       onMouseLeave={start}
     >
-      {/* Slides */}
+      {/* ✅ Slides */}
       {slides.map((slide, i) => (
         <div
           key={slide.src}
@@ -55,22 +56,25 @@ export default function HeroSlider() {
             className="w-full h-full object-cover"
           />
 
-          {/* Optional overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none" />
+          {/* ✅ Overlay (theme-aware) */}
+          <div className="absolute inset-0
+                          bg-gradient-to-b from-white/30 via-transparent to-black/60
+                          dark:from-black/40 dark:via-transparent dark:to-black/80
+                          transition-colors duration-500 pointer-events-none" />
         </div>
       ))}
 
-      {/* Dots */}
-      <div className="absolute bottom-5 left-0 right-0 flex justify-center gap-2">
+      {/* ✅ Dots */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className={`h-2.5 rounded-full transition-all ${
+            className={`h-2.5 rounded-full transition-all duration-300 ${
               i === index
-                ? "w-6 bg-[#00D8FE]"
-                : "w-2.5 bg-white/40 hover:bg-white/70"
+                ? "w-6 bg-[#00D8FE] shadow-[0_0_10px_#00D8FE80]"
+                : "w-2.5 bg-gray-400 dark:bg-white/30 hover:bg-[#00D8FE]/60"
             }`}
           />
         ))}

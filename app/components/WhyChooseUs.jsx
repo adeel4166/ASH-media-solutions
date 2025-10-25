@@ -5,21 +5,20 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 px-6 bg-[#000] text-white relative overflow-hidden">
-      {/* Background tone */}
-      <div className="absolute inset-0 bg-[#001F22]/60 -z-10" />
-
+    <section
+      className="relative py-20 px-6 bg-[#071414] text-white overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        {/* ✅ LEFT SIDE — STAGGERED IMAGES LIKE REFERENCE */}
-        <motion.div
-          initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="relative flex justify-center md:justify-start items-center gap-6"
-        >
-          {/* Left Image (slightly lower) */}
-          <div className="rounded-3xl overflow-hidden shadow-lg w-56 h-72 md:w-64 md:h-80 mt-10">
+        {/* ✅ LEFT SIDE — Animated Images */}
+        <div className="relative flex justify-center md:justify-start items-center gap-6">
+          {/* Left Image — comes from left */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="rounded-3xl overflow-hidden w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-80 mt-10"
+          >
             <Image
               src="/person1.jpg"
               alt="Team member smiling"
@@ -27,10 +26,16 @@ export default function WhyChooseUs() {
               height={500}
               className="object-cover w-full h-full"
             />
-          </div>
+          </motion.div>
 
-          {/* Right Image (slightly higher) */}
-          <div className="rounded-3xl overflow-hidden shadow-lg w-56 h-72 md:w-64 md:h-80 -mt-10">
+          {/* Right Image — comes from bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="rounded-3xl overflow-hidden w-48 h-64 sm:w-56 sm:h-72 md:w-64 md:h-80 -mt-10"
+          >
             <Image
               src="/person2.jpg"
               alt="Team working together"
@@ -38,25 +43,21 @@ export default function WhyChooseUs() {
               height={500}
               className="object-cover w-full h-full"
             />
-          </div>
+          </motion.div>
 
-          {/* ✅ Orange Experience Box — Overlapping Center */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            viewport={{ once: true }}
+          {/* ✅ Experience Box — Static, same position as reference */}
+          <div
             className="absolute bottom-[-30px] left-1/2 transform -translate-x-1/2 
-                       bg-[#FF6A00] px-8 py-5 rounded-2xl shadow-[0_0_20px_#ff6a0040]"
+                       bg-[#00D8FE] text-black font-bold px-8 py-5 rounded-2xl"
           >
-            <p className="text-center text-white font-bold leading-tight">
+            <p className="text-center leading-tight">
               <span className="text-4xl font-extrabold block">20</span>
               Years Of <br /> Experience
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        {/* ✅ RIGHT SIDE — TEXT SECTION */}
+        {/* ✅ RIGHT SIDE — Text Content */}
         <motion.div
           initial={{ opacity: 0, x: 80 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -81,9 +82,8 @@ export default function WhyChooseUs() {
           <motion.a
             href="/contact"
             whileHover={{ scale: 1.05 }}
-            className="inline-flex items-center gap-3 bg-[#00D8FE] text-black font-semibold 
-                       px-6 py-3 rounded-full shadow-[0_0_15px_#00D8FE60] hover:shadow-[0_0_25px_#00D8FE90] 
-                       transition-all duration-300"
+            className="inline-flex items-center gap-3 bg-[#00D8FE] text-black font-semibold
+                       px-6 py-3 rounded-full hover:bg-[#00bfe4] transition-all duration-300"
           >
             <FaPhoneAlt className="text-lg" />
             Contact Us Now

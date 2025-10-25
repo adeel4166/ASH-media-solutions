@@ -8,8 +8,6 @@ import {
   FaInfoCircle,
   FaServicestack,
   FaProjectDiagram,
-  FaEnvelope,
-
 } from "react-icons/fa";
 
 export default function Navbar() {
@@ -19,14 +17,12 @@ export default function Navbar() {
     { name: "Home", href: "/", icon: <FaHome /> },
     { name: "About", href: "/about", icon: <FaInfoCircle /> },
     { name: "Services", href: "/services", icon: <FaServicestack /> },
-    { name: "Projects", href: "/projects", icon: <FaProjectDiagram /> },
-    { name: "Contact", href: "/contact", icon: <FaEnvelope /> },
-    
+    { name: "Our Team", href: "/team", icon: <FaProjectDiagram /> },
   ];
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-[#000000]/80 border-b border-[#00444F] shadow-lg font-[Poppins]">
-      <nav className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-[#0a1818] border-b border-[#00444F]/40 font-[Poppins]">
+      <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
         {/* ✅ Logo */}
         <Link
           href="/"
@@ -34,14 +30,14 @@ export default function Navbar() {
         >
           <Image
             src="/thursday.png"
-            alt="ASH MEDIA SOLUTIONS Logo"
+            alt="ASH Media Solutions Logo"
             width={45}
             height={45}
             className="rounded-xl"
             priority
           />
           <span
-            className="text-2xl tracking-wide text-[#00D8FE] font-[Amsterdam4] drop-shadow-[0_0_6px_rgba(0,216,254,0.5)]"
+            className="text-2xl tracking-wide text-[#00D8FE] font-[Amsterdam4]"
             style={{ letterSpacing: "1.5px" }}
           >
             ASH MEDIA SOLUTIONS
@@ -49,12 +45,12 @@ export default function Navbar() {
         </Link>
 
         {/* ✅ Desktop Links */}
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
           {links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="relative group text-gray-300 hover:text-[#00D8FE] transition"
+              className="relative group text-gray-300 hover:text-[#00D8FE] transition-colors duration-300"
             >
               {link.name}
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#00D8FE] transition-all duration-300 group-hover:w-full"></span>
@@ -62,18 +58,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* ✅ CTA Button (Desktop) */}
+        {/* ✅ Contact Button (Desktop) */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center rounded-xl px-5 py-2.5 font-semibold text-sm
-                     bg-[#00D8FE] text-black hover:bg-[#00b8da]
-                     shadow-[0_0_15px_#00D8FE80] hover:shadow-[0_0_25px_#00D8FE]
-                     hover:scale-[1.05] transition-all duration-300 font-[Poppins]"
+          className="hidden md:inline-flex items-center rounded-md px-5 py-2.5 font-semibold text-sm
+                     bg-[#00D8FE] text-black hover:bg-[#00bfe4]
+                     hover:scale-[1.03] transition-all duration-300"
         >
-          Get a Quote
+          Contact Us
         </Link>
 
-        {/* ✅ Mobile Toggle Button */}
+        {/* ✅ Mobile Menu Toggle */}
         <button
           className="md:hidden text-[#00D8FE] text-3xl cursor-pointer transition-transform"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -91,8 +86,8 @@ export default function Navbar() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -250, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="md:hidden fixed top-[72px] left-0 w-full bg-[#000] border-t border-[#00444F]
-                       shadow-[0_0_25px_#00D8FE30] py-6 flex flex-col items-center z-40"
+            className="md:hidden fixed top-[72px] left-0 w-full bg-[#0a1818] border-t border-[#00444F]/40
+                       py-6 flex flex-col items-center z-40"
           >
             {links.map((link) => (
               <Link
@@ -111,12 +106,11 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-6 inline-flex justify-center items-center rounded-xl px-6 py-3 font-semibold
-                         bg-[#00D8FE] text-black hover:bg-[#00b8da]
-                         shadow-[0_0_15px_#00D8FE80] hover:shadow-[0_0_25px_#00D8FE]
-                         transition-all duration-300 font-[Poppins]"
+              className="mt-6 inline-flex justify-center items-center rounded-md px-6 py-3 font-semibold
+                         bg-[#00D8FE] text-black hover:bg-[#00bfe4]
+                         transition-all duration-300"
             >
-              Get a Quote
+              Contact Us
             </Link>
           </motion.div>
         )}

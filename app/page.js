@@ -1,87 +1,98 @@
 "use client";
-import Navbar from"./components/Navbar";
-import HeroSlider from"./components/HeroSlider";
+import Navbar from "./components/Navbar";
+import HeroSlider from "./components/HeroSlider";
 import WhyChooseUs from "./components/WhyChooseUs";
 import ServicesWeProvide from "./components/ServicesWeProvide";
-
 import FixedBackgroundSection from "./components/FixedBackgroundSection";
 import TrafficBoostSection from "./components/TrafficBoostSection";
 import CompletedStories from "./components/CompletedStories";
 import OurClients from "./components/OurClients";
-import Testimonials from"./components/Testimonials";
+import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaFacebookF, FaShoppingCart, FaLaptopCode } from "react-icons/fa";
 
 export default function HomePage() {
+  const services = [
+    {
+      icon: <FaFacebookF className="text-white text-xl" />,
+      title: "Social Media Marketing",
+      desc: "Boost your brand’s online presence with expert-led social media marketing solutions.",
+      color: "#00D8FE",
+    },
+    {
+      icon: <FaShoppingCart className="text-white text-xl" />,
+      title: "E-commerce Marketing",
+      desc: "We analyze market trends and consumer behavior to drive targeted traffic, boost conversions, and grow your online store.",
+      color: "#00D8FE",
+    },
+    {
+      icon: <FaLaptopCode className="text-white text-xl" />,
+      title: "Web Design & Development",
+      desc: "We craft responsive, user-focused websites by analyzing market trends and digital behavior to enhance UX and drive results.",
+      color: "#00D8FE",
+    },
+  ];
+
   return (
     <>
+      {/* ✅ Navbar */}
       <Navbar />
 
-      {/* HERO SLIDER */}
-      <div className="mb-0">
+      {/* ✅ HERO SECTION */}
+      <div className="relative m-0 p-0">
         <HeroSlider />
       </div>
 
-    
-      {/* ✅ SERVICES SECTION (Rounded + Animated + Side Icons) */}
-<section className="py-20 px-6 bg-transparent">
-  <div className="max-w-6xl mx-auto text-center mb-14">
-    <h2 className="text-3xl md:text-4xl font-bold text-[#00D8FE] mb-4">
-      Our Core Services
-    </h2>
-    <p className="text-gray-400 max-w-2xl mx-auto">
-      We help businesses grow with digital marketing, web design, and branding solutions that deliver results.
-    </p>
-  </div>
-
-  <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-3">
-    {[
-      {
-        icon: <FaFacebookF className="text-white text-2xl" />,
-        title: "Social Media Marketing",
-        desc: "Boost your brand’s online presence with expert-led social media marketing strategies that engage and convert.",
-      },
-      {
-        icon: <FaShoppingCart className="text-white text-2xl" />,
-        title: "E-commerce Marketing",
-        desc: "We analyze market trends and consumer behavior to drive traffic, increase conversions, and grow your online store.",
-      },
-      {
-        icon: <FaLaptopCode className="text-white text-2xl" />,
-        title: "Web Design & Development",
-        desc: "We craft responsive, user-focused websites that drive results and enhance digital experiences.",
-      },
-    ].map((service, i) => (
-      <motion.div
-        key={i}
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: i * 0.2 }}
-        viewport={{ once: true }}
-        className="flex items-start gap-5 p-8 bg-[#0a0a0a]/70 
-                   rounded-[30px] border border-[#00444F]/60 shadow-lg 
-                   hover:shadow-[0_0_25px_#00D8FE40] hover:border-[#00D8FE]/60 
-                   transition-all duration-300 backdrop-blur-sm"
+      {/* ✅ OUR CORE SERVICES (Dark theme + no gap) */}
+      <section
+        className="pt-0 pb-20 px-6 bg-[#071414] transition-colors duration-500"
+        id="core-services"
       >
-        {/* Icon */}
-        <div className="flex items-center justify-center w-16 h-16 rounded-full 
-                        bg-gradient-to-r from-[#00444F] to-[#00D8FE] flex-shrink-0 
-                        shadow-[0_0_10px_#00D8FE60]">
-          {service.icon}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto bg-[#0E1E1E] rounded-[40px] p-10 md:p-16 border border-[#093333] -mt-1"
+        >
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#093333]">
+            {services.map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: i * 0.15 }}
+                viewport={{ once: true }}
+                className="flex flex-row items-center gap-6 p-8"
+              >
+                {/* Icon (LEFT + Centered + Smaller) */}
+                <div
+                  className="flex items-center justify-center w-[70px] h-[70px] rounded-full flex-shrink-0"
+                  style={{ backgroundColor: service.color }}
+                >
+                  {service.icon}
+                </div>
 
-        {/* Text */}
-        <div className="text-left">
-          <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
-          <p className="text-gray-400 leading-relaxed">{service.desc}</p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</section>
+                {/* Text */}
+                <div className="text-left">
+                  <h3 className="text-[24px] md:text-[26px] font-extrabold text-white leading-snug mb-2">
+                    {service.title.split(" ")[0]}{" "}
+                    <span className="block text-white">
+                      {service.title.split(" ").slice(1).join(" ")}
+                    </span>
+                  </h3>
+                  <p className="text-gray-300 text-[15px] leading-relaxed">
+                    {service.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
 
+      {/* ✅ OTHER SECTIONS */}
       <WhyChooseUs />
       <ServicesWeProvide />
       <FixedBackgroundSection />
@@ -90,6 +101,7 @@ export default function HomePage() {
       <OurClients />
       <Testimonials />
 
+      {/* ✅ FOOTER */}
       <Footer />
     </>
   );
