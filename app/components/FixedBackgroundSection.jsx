@@ -28,7 +28,7 @@ export default function FixedBackgroundSection() {
             src="/thursday.png" // replace with your logo
             alt="ASH Media Solutions"
             width={260}
-            height={90}
+            height={60}
             className="mx-auto object-contain"
           />
         </div>
