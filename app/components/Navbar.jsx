@@ -15,7 +15,7 @@ export default function Navbar() {
 
   const links = [
     { name: "Services", href: "/services", icon: <FaServicestack /> },
-    { name: "Blog", href: "/blog", icon: <FaBlog /> },
+
     { name: "About Us", href: "/about", icon: <FaInfoCircle /> },
     { name: "Our Team", href: "/team", icon: <FaUsers /> },
   ];
