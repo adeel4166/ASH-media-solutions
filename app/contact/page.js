@@ -11,24 +11,20 @@ export default function ContactPage() {
       {/* ✅ Navbar */}
       <Navbar />
 
-      {/* 🖼️ HERO SECTION */}
-      <section className="relative h-[65vh] flex items-center justify-center overflow-hidden border-b border-[#00444F]/40">
-        <Image
-          src="/contact.jpg"
-          alt="Contact ASH Media Solutions"
-          fill
-          className="object-cover opacity-60"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#071414]/85" />
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-5xl md:text-6xl font-bold text-[#00D8FE] tracking-tight"
-        >
-          Contact Us
-        </motion.h1>
+      {/* 🌄 HERO SECTION — Responsive & Clean */}
+      <section className="relative flex items-center justify-center text-center border-b border-[#00444F]/40">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh]">
+          <Image
+            src="/contact.jpg"
+            alt="Contact ASH Media Solutions"
+            fill
+            sizes="100vw"
+            priority
+            className="object-contain sm:object-cover w-full h-full transition-none"
+          />
+        </div>
+
+       
       </section>
 
       {/* 📞 CONTACT SECTION */}
@@ -40,12 +36,12 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-[#00D8FE] tracking-tight leading-snug"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#00D8FE] tracking-tight leading-snug"
           >
             Let’s Grow Your Brand — Locally & Globally
           </motion.h2>
 
-          <p className="text-gray-300 text-[17px] leading-relaxed max-w-2xl">
+          <p className="text-gray-300 text-[16px] sm:text-[17px] leading-relaxed max-w-2xl">
             Partner with{" "}
             <span className="text-[#00D8FE] font-semibold">
               ASH MEDIA SOLUTIONS
@@ -55,18 +51,24 @@ export default function ContactPage() {
           </p>
 
           {/* CONTACT BOXES */}
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="grid sm:grid-cols-2 gap-8 mt-12">
             {[
               {
                 icon: <FaMapMarkerAlt />,
                 title: "Office",
-                desc: "Office #42, Block D-3, Engineering Town, Lahore",
+                desc: (
+                  <>
+                    E8 Plaza Commercial Block, 
+                    Near Shaheen Block, Chinar Bagh,
+                    Raiwind Road, Lahore, Pakistan
+                  </>
+                ),
               },
-              { icon: <FaPhoneAlt />, title: "Phone", desc: "+92 302 9358220" },
+              { icon: <FaPhoneAlt />, title: "Phone", desc: "+92 3477858316" },
               {
                 icon: <FaEnvelope />,
                 title: "Email",
-                desc: "info@ashmediasolutions.com",
+                desc: "ashmediasolutions01@gmail.com",
               },
               {
                 icon: <FaClock />,
@@ -82,16 +84,16 @@ export default function ContactPage() {
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.02, y: -3 }}
+                whileHover={{ scale: 1.03, y: -3 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-6 bg-[#041010] border border-[#00444F]/50 rounded-2xl transition-all duration-300"
+                className="p-6 bg-[#041010] border border-[#00444F]/50 rounded-2xl transition-all duration-300 hover:border-[#00D8FE]"
               >
                 <div className="text-[#00D8FE] text-3xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-bold mb-2 text-[#00D8FE] tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-[16px] leading-relaxed">
+                <p className="text-gray-400 text-[15px] leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
@@ -105,7 +107,7 @@ export default function ContactPage() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-[#041010] p-8 rounded-2xl border border-[#00444F]/50"
+          className="bg-[#041010] p-8 rounded-2xl border border-[#00444F]/50 shadow-md"
         >
           <h3 className="text-2xl font-bold text-[#00D8FE] mb-6 tracking-tight">
             Drop A Line
@@ -138,13 +140,14 @@ export default function ContactPage() {
         </motion.form>
       </section>
 
-      {/* 🗺️ MAP SECTION */}
+      {/* 🗺️ MAP SECTION — Updated with Correct Location */}
       <div className="w-full h-[400px] border-t border-[#00444F]/40">
         <iframe
-          src="https://www.google.com/maps?q=Engineering%20Town%20Lahore&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6815.624757221208!2d74.2345!3d31.3229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919ab57b307efcf%3A0x5182fb70cc0f4fb6!2sASH%20Media%20Solutions!5e0!3m2!1sen!2s!4v1730378142780!5m2!1sen!2s"
           className="w-full h-full border-none"
           allowFullScreen
           loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
 

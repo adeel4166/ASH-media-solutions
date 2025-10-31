@@ -24,11 +24,11 @@ export default function Navbar() {
         >
           <div className="h-[55px] flex items-center">
             <Image
-              src="/thursday.png"
+              src="/logo1.png"
               alt="ASH Media Solutions Logo"
               width={170}
               height={45}
-              className="object-contain w-[250px] max-h-[550px]"
+              className="object-contain w-[150px] max-h-[150px]"
               priority
             />
           </div>

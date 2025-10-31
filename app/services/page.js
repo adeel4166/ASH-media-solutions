@@ -81,16 +81,19 @@ export default function ServicesPage() {
     <main className="bg-[#071414] text-gray-300 min-h-screen transition-colors duration-500 font-sans">
       <Navbar />
 
-      {/* 🌟 HERO SECTION — clean, bright, no overlay */}
-      <section className="relative h-[70vh] flex items-center justify-center text-center overflow-hidden border-b border-[#00444F]/40">
-        <Image
-          src="/service1.jpg"
-          alt="Our Services - ASH Media Solutions"
-          fill
-          className="object-cover object-center transition-none"
-          priority
-        />
-       
+      {/* 🌟 HERO SECTION — Perfectly responsive */}
+      <section className="relative flex items-center justify-center text-center border-b border-[#00444F]/40">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
+          <Image
+            src="/service1.jpg"
+            alt="Our Services - ASH Media Solutions"
+            fill
+            priority
+            className="object-contain sm:object-cover md:object-cover lg:object-cover w-full h-full"
+            sizes="100vw"
+          />
+        </div>
+        
       </section>
 
       {/* 🧩 SERVICES GRID */}
@@ -117,12 +120,11 @@ export default function ServicesPage() {
               key={i}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: 'easeOut' }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02, borderColor: "#00D8FE" }}
+              whileHover={{ scale: 1.03, borderColor: "#00D8FE" }}
               className="group rounded-2xl p-10 border border-[#00444F]/30 bg-[#041010] transition-all duration-300"
             >
-              {/* ✅ Clean Icon without background */}
               <div className="flex items-center gap-4 mb-6">
                 {service.icon}
                 <h3 className="text-2xl font-bold text-[#00D8FE] tracking-tight">

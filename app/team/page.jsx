@@ -18,16 +18,17 @@ export default function TeamPage() {
     <main className="bg-[#071414] text-gray-300 min-h-screen font-sans">
       <Navbar />
 
-      {/* 🌄 HERO SECTION — Fixed (no auto zoom or crop) */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden border-b border-[#00444F]/40">
-        <div className="absolute inset-0">
+      {/* 🌄 HERO SECTION — Perfectly responsive */}
+      <section className="relative flex items-center justify-center text-center border-b border-[#00444F]/40">
+        {/* ✅ Responsive container for hero image */}
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
           <Image
             src="/team1.jpg"
             alt="Our Team"
             fill
-            sizes="100vw"
             priority
-            className="w-full h-full object-center sm:object-cover object-contain transition-none"
+            sizes="100vw"
+            className="object-contain sm:object-cover md:object-cover lg:object-cover w-full h-full transition-none"
           />
         </div>
 
@@ -47,7 +48,7 @@ export default function TeamPage() {
           <h2 className="text-4xl md:text-5xl font-bold text-[#00D8FE] mb-3">
             Meet Our Professionals
           </h2>
-          <p className="text-gray-400 text-[17px] leading-relaxed">
+          <p className="text-gray-400 text-[17px] leading-relaxed max-w-2xl mx-auto">
             The creative individuals driving success at{" "}
             <span className="text-[#00D8FE] font-semibold">
               ASH Media Solutions
@@ -67,8 +68,8 @@ export default function TeamPage() {
               whileHover={{ scale: 1.03, y: -5 }}
               className="rounded-xl border border-[#00444F]/40 bg-[#041010] overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_#00D8FE33]"
             >
-              {/* IMAGE SECTION */}
-              <div className="relative w-full h-[400px] overflow-hidden group">
+              {/* Image */}
+              <div className="relative w-full h-[380px] sm:h-[420px] overflow-hidden group">
                 <div className="w-full h-full transition-transform duration-500 group-hover:scale-105">
                   <Image
                     src={member.img}
@@ -80,7 +81,7 @@ export default function TeamPage() {
                 </div>
               </div>
 
-              {/* BOX BELOW IMAGE */}
+              {/* Info */}
               <div className="bg-[#0C1C1C] py-5 text-center border-t border-[#00444F]/40">
                 <h3 className="text-[#00D8FE] text-xl font-bold mb-1 tracking-tight">
                   {member.name}

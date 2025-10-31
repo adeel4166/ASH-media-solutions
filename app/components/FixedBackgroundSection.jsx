@@ -23,9 +23,9 @@ export default function FixedBackgroundSection() {
         className="relative z-10 flex flex-col items-center justify-center px-6"
       >
         {/* 🔹 Logo */}
-        <div className="mb-6">
+        <div className="mb-15">
           <Image
-            src="/thursday.png"
+            src="/logo1.png"
             alt="ASH Media Solutions"
             width={180}
             height={50}
@@ -39,11 +39,11 @@ export default function FixedBackgroundSection() {
           className="text-[1.5rem] md:text-[1.9rem] lg:text-[2.2rem] xl:text-[1.8rem] font-bold leading-tight text-center 
                max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto tracking-wide whitespace-normal"
         >
-          <span className="text-[#00D8FE]">Ready to Work with a </span>
+          <span className="text-[#f3f8f9]">Ready to Work with a </span>
           <span className="text-white">
-            Top Digital Marketing Company in Lahore{" "}
+            Top Digital Marketing Company in Lahore That{" "}
           </span>
-          <span className="text-[#00D8FE]">That Delivers Results?</span>
+          <span className="text-[#e7e9ea]">Delivers Results?</span>
         </h2>
 
         {/* 🔹 Button */}

@@ -53,7 +53,7 @@ export default function Footer() {
           {/* LOGO */}
           <div className="relative w-44 h-16 -mt-2 mb-2">
             <Image
-              src="/thursday.png"
+              src="/logo1.png"
               alt="ASH Media Solutions Logo"
               fill
               className="object-contain"
@@ -94,16 +94,18 @@ export default function Footer() {
           <ul className="space-y-3 text-[15px] leading-relaxed">
             <li>
               <span className="text-white font-semibold">Phone:</span>{" "}
-              <span className="text-gray-300">+92 308 6595133</span>
+              <span className="text-gray-300">+92 3477858316</span>
             </li>
             <li>
               <span className="text-white font-semibold">Email:</span>{" "}
-              <span className="text-gray-300">ashmediasolution1@gmail.com</span>
+              <span className="text-gray-300">ashmediasolutions01@gmail.com</span>
             </li>
             <li>
               <span className="text-white font-semibold">Address:</span>{" "}
               <span className="text-gray-300">
-                Office #12, Chinar Bagh, Raiwind Road, Lahore, Pakistan
+                E8 Plaza Commercial Block, <br />
+                    Near Shaheen Block, Chinar Bagh, <br />
+                    Raiwind Road, Lahore, Pakistan
               </span>
             </li>
           </ul>
@@ -115,7 +117,7 @@ export default function Footer() {
             Quick Links
           </h3>
           <ul className="space-y-3 text-[15px]">
-            {["About Us", "Services", "Projects", "Contact", "Careers"].map(
+            {["About Us", "Services", "Contact", ].map(
               (link) => (
                 <li key={link}>
                   <Link
