@@ -18,9 +18,8 @@ export default function TeamPage() {
     <main className="bg-[#071414] text-gray-300 min-h-screen font-sans">
       <Navbar />
 
-      {/* 🌄 HERO SECTION — Perfectly responsive */}
+      {/* 🌄 HERO SECTION — Fully responsive */}
       <section className="relative flex items-center justify-center text-center border-b border-[#00444F]/40">
-        {/* ✅ Responsive container for hero image */}
         <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
           <Image
             src="/team1.jpg"
@@ -31,8 +30,6 @@ export default function TeamPage() {
             className="object-contain sm:object-cover md:object-cover lg:object-cover w-full h-full transition-none"
           />
         </div>
-
-       
       </section>
 
       {/* 👥 TEAM SECTION */}
@@ -68,8 +65,8 @@ export default function TeamPage() {
               whileHover={{ scale: 1.03, y: -5 }}
               className="rounded-xl border border-[#00444F]/40 bg-[#041010] overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_#00D8FE33]"
             >
-              {/* Image */}
-              <div className="relative w-full h-[380px] sm:h-[420px] overflow-hidden group">
+              {/* IMAGE SECTION (Smaller Height) */}
+              <div className="relative w-full h-[320px] sm:h-[360px] overflow-hidden group">
                 <div className="w-full h-full transition-transform duration-500 group-hover:scale-105">
                   <Image
                     src={member.img}
@@ -81,12 +78,12 @@ export default function TeamPage() {
                 </div>
               </div>
 
-              {/* Info */}
-              <div className="bg-[#0C1C1C] py-5 text-center border-t border-[#00444F]/40">
-                <h3 className="text-[#00D8FE] text-xl font-bold mb-1 tracking-tight">
+              {/* BOX BELOW IMAGE */}
+              <div className="bg-[#0C1C1C] py-4 text-center border-t border-[#00444F]/40">
+                <h3 className="text-[#00D8FE] text-lg font-bold mb-1 tracking-tight">
                   {member.name}
                 </h3>
-                <p className="text-gray-400 text-sm font-medium uppercase tracking-wide">
+                <p className="text-gray-400 text-[13px] font-medium uppercase tracking-wide">
                   {member.role}
                 </p>
               </div>

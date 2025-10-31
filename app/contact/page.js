@@ -8,28 +8,25 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa"
 export default function ContactPage() {
   return (
     <main className="bg-[#071414] text-gray-200 min-h-screen font-sans">
-      {/* ✅ Navbar */}
       <Navbar />
 
-      {/* 🌄 HERO SECTION — Responsive & Clean */}
+      {/* 🌄 HERO SECTION — Clean, no overlay tint */}
       <section className="relative flex items-center justify-center text-center border-b border-[#00444F]/40">
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh]">
+        <div className="relative w-full h-[45vh] sm:h-[55vh] md:h-[65vh] lg:h-[75vh]">
           <Image
             src="/contact.jpg"
             alt="Contact ASH Media Solutions"
             fill
             sizes="100vw"
             priority
-            className="object-contain sm:object-cover w-full h-full transition-none"
+            className="object-contain sm:object-cover w-full h-full"
           />
         </div>
-
-       
       </section>
 
       {/* 📞 CONTACT SECTION */}
-      <section className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-3 gap-14">
-        {/* LEFT SIDE — DETAILS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-16 grid lg:grid-cols-3 gap-10 md:gap-14">
+        {/* LEFT SIDE — INFO */}
         <div className="col-span-2 space-y-8">
           <motion.h2
             initial={{ opacity: 0, x: -40 }}
@@ -58,13 +55,13 @@ export default function ContactPage() {
                 title: "Office",
                 desc: (
                   <>
-                    E8 Plaza Commercial Block, 
-                    Near Shaheen Block, Chinar Bagh,
+                    E8 Plaza Commercial Block, <br />
+                    Near Shaheen Block, Chinar Bagh, <br />
                     Raiwind Road, Lahore, Pakistan
                   </>
                 ),
               },
-              { icon: <FaPhoneAlt />, title: "Phone", desc: "+92 3477858316" },
+              { icon: <FaPhoneAlt />, title: "Phone", desc: "+92 347 7858316" },
               {
                 icon: <FaEnvelope />,
                 title: "Email",
@@ -107,7 +104,7 @@ export default function ContactPage() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-[#041010] p-8 rounded-2xl border border-[#00444F]/50 shadow-md"
+          className="bg-[#041010] p-6 sm:p-8 rounded-2xl border border-[#00444F]/50 shadow-md w-full"
         >
           <h3 className="text-2xl font-bold text-[#00D8FE] mb-6 tracking-tight">
             Drop A Line
@@ -140,10 +137,10 @@ export default function ContactPage() {
         </motion.form>
       </section>
 
-      {/* 🗺️ MAP SECTION — Updated with Correct Location */}
+      {/* 🗺️ MAP SECTION — Fixed Proper Embed */}
       <div className="w-full h-[400px] border-t border-[#00444F]/40">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6815.624757221208!2d74.2345!3d31.3229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919ab57b307efcf%3A0x5182fb70cc0f4fb6!2sASH%20Media%20Solutions!5e0!3m2!1sen!2s!4v1730378142780!5m2!1sen!2s"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.480537943327!2d74.2447!3d31.3229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919ab57b307efcf%3A0x5182fb70cc0f4fb6!2sASH%20Media%20Solutions!5e0!3m2!1sen!2s!4v1730378142780!5m2!1sen!2s"
           className="w-full h-full border-none"
           allowFullScreen
           loading="lazy"
@@ -151,7 +148,6 @@ export default function ContactPage() {
         ></iframe>
       </div>
 
-      {/* ✅ Footer */}
       <Footer />
     </main>
   );

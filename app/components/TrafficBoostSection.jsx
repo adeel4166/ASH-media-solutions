@@ -102,7 +102,7 @@ export default function TrafficBoostSection() {
               </div>
               <div>
                 <p className="text-sm text-gray-400">Call Us Now</p>
-                <p className="text-white font-semibold">+92 302 9358220</p>
+                <p className="text-white font-semibold">+92 3477858316</p>
               </div>
             </div>
           </div>
