@@ -8,9 +8,10 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa"
 export default function ContactPage() {
   return (
     <main className="bg-[#071414] text-gray-200 min-h-screen font-sans">
+      {/* ✅ Navbar */}
       <Navbar />
 
-      {/* 🌄 HERO SECTION — Clean, no overlay tint */}
+      {/* 🌄 HERO SECTION — Clean, Edge-to-Edge */}
       <section className="relative flex items-center justify-center text-center border-b border-[#00444F]/40">
         <div className="relative w-full h-[45vh] sm:h-[55vh] md:h-[65vh] lg:h-[75vh]">
           <Image
@@ -19,13 +20,13 @@ export default function ContactPage() {
             fill
             sizes="100vw"
             priority
-            className="object-contain sm:object-cover w-full h-full"
+            className="object-cover w-full h-full"
           />
         </div>
       </section>
 
-      {/* 📞 CONTACT SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-16 grid lg:grid-cols-3 gap-10 md:gap-14">
+      {/* 📞 CONTACT SECTION — Fully Responsive */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-16 flex flex-col lg:grid lg:grid-cols-3 gap-10 md:gap-14">
         {/* LEFT SIDE — INFO */}
         <div className="col-span-2 space-y-8">
           <motion.h2
@@ -48,7 +49,7 @@ export default function ContactPage() {
           </p>
 
           {/* CONTACT BOXES */}
-          <div className="grid sm:grid-cols-2 gap-8 mt-12">
+          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mt-10">
             {[
               {
                 icon: <FaMapMarkerAlt />,
@@ -84,13 +85,16 @@ export default function ContactPage() {
                 whileHover={{ scale: 1.03, y: -3 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-6 bg-[#041010] border border-[#00444F]/50 rounded-2xl transition-all duration-300 hover:border-[#00D8FE]"
+                className="p-5 sm:p-6 bg-[#041010] border border-[#00444F]/50 rounded-2xl 
+                           transition-all duration-300 hover:border-[#00D8FE] w-full"
               >
-                <div className="text-[#00D8FE] text-3xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-2 text-[#00D8FE] tracking-tight">
+                <div className="text-[#00D8FE] text-3xl mb-3 sm:mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-[#00D8FE] tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-[15px] leading-relaxed">
+                <p className="text-gray-400 text-[14px] sm:text-[15px] leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
@@ -104,32 +108,38 @@ export default function ContactPage() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-[#041010] p-6 sm:p-8 rounded-2xl border border-[#00444F]/50 shadow-md w-full"
+          className="bg-[#041010] w-full mt-12 lg:mt-0 p-5 sm:p-6 md:p-8 rounded-2xl 
+                     border border-[#00444F]/50 shadow-md mx-auto max-w-md lg:max-w-full"
         >
-          <h3 className="text-2xl font-bold text-[#00D8FE] mb-6 tracking-tight">
+          <h3 className="text-2xl font-bold text-[#00D8FE] mb-6 tracking-tight text-center sm:text-left">
             Drop A Line
           </h3>
+
           <div className="space-y-5">
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full px-4 py-3 rounded-md bg-transparent border border-[#00444F]/60 text-white focus:border-[#00D8FE] outline-none transition-all"
+              className="w-full px-4 py-3 rounded-md bg-transparent border border-[#00444F]/60 
+                         text-white focus:border-[#00D8FE] outline-none transition-all text-sm sm:text-base"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full px-4 py-3 rounded-md bg-transparent border border-[#00444F]/60 text-white focus:border-[#00D8FE] outline-none transition-all"
+              className="w-full px-4 py-3 rounded-md bg-transparent border border-[#00444F]/60 
+                         text-white focus:border-[#00D8FE] outline-none transition-all text-sm sm:text-base"
             />
             <textarea
               placeholder="Message"
               rows="4"
-              className="w-full px-4 py-3 rounded-md bg-transparent border border-[#00444F]/60 text-white focus:border-[#00D8FE] outline-none transition-all"
+              className="w-full px-4 py-3 rounded-md bg-transparent border border-[#00444F]/60 
+                         text-white focus:border-[#00D8FE] outline-none transition-all text-sm sm:text-base resize-none"
             ></textarea>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 rounded-md font-semibold bg-[#00D8FE] text-black transition-all duration-300 hover:bg-[#00bfe4]"
+              className="w-full py-3 rounded-md font-semibold bg-[#00D8FE] text-black 
+                         transition-all duration-300 hover:bg-[#00bfe4] text-sm sm:text-base"
             >
               Send Message
             </motion.button>
@@ -137,7 +147,7 @@ export default function ContactPage() {
         </motion.form>
       </section>
 
-      {/* 🗺️ MAP SECTION — Fixed Proper Embed */}
+      {/* 🗺️ MAP SECTION — Updated Embed */}
       <div className="w-full h-[400px] border-t border-[#00444F]/40">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.480537943327!2d74.2447!3d31.3229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919ab57b307efcf%3A0x5182fb70cc0f4fb6!2sASH%20Media%20Solutions!5e0!3m2!1sen!2s!4v1730378142780!5m2!1sen!2s"
@@ -148,6 +158,7 @@ export default function ContactPage() {
         ></iframe>
       </div>
 
+      {/* ✅ Footer */}
       <Footer />
     </main>
   );
