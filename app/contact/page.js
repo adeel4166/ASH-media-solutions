@@ -7,7 +7,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from "react-icons/fa"
 
 export default function ContactPage() {
   return (
-    <main className="bg-[#071414] text-gray-200 min-h-screen font-[Poppins]">
+    <main className="bg-[#071414] text-gray-200 min-h-screen font-sans">
       {/* ✅ Navbar */}
       <Navbar />
 
@@ -25,7 +25,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 text-5xl md:text-6xl font-[Amsterdam4] text-[#00D8FE]"
+          className="relative z-10 text-5xl md:text-6xl font-bold text-[#00D8FE] tracking-tight"
         >
           Contact Us
         </motion.h1>
@@ -40,12 +40,12 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-[Amsterdam4] text-[#00D8FE]"
+            className="text-4xl md:text-5xl font-bold text-[#00D8FE] tracking-tight leading-snug"
           >
             Let’s Grow Your Brand — Locally & Globally
           </motion.h2>
 
-          <p className="text-gray-400 leading-relaxed max-w-2xl">
+          <p className="text-gray-300 text-[17px] leading-relaxed max-w-2xl">
             Partner with{" "}
             <span className="text-[#00D8FE] font-semibold">
               ASH MEDIA SOLUTIONS
@@ -62,11 +62,7 @@ export default function ContactPage() {
                 title: "Office",
                 desc: "Office #42, Block D-3, Engineering Town, Lahore",
               },
-              {
-                icon: <FaPhoneAlt />,
-                title: "Phone",
-                desc: "+92 302 9358220",
-              },
+              { icon: <FaPhoneAlt />, title: "Phone", desc: "+92 302 9358220" },
               {
                 icon: <FaEnvelope />,
                 title: "Email",
@@ -92,10 +88,12 @@ export default function ContactPage() {
                 className="p-6 bg-[#041010] border border-[#00444F]/50 rounded-2xl transition-all duration-300"
               >
                 <div className="text-[#00D8FE] text-3xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-[#00D8FE]">
+                <h3 className="text-xl font-bold mb-2 text-[#00D8FE] tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-gray-400">{item.desc}</p>
+                <p className="text-gray-400 text-[16px] leading-relaxed">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -109,7 +107,7 @@ export default function ContactPage() {
           viewport={{ once: true }}
           className="bg-[#041010] p-8 rounded-2xl border border-[#00444F]/50"
         >
-          <h3 className="text-2xl font-[Amsterdam4] text-[#00D8FE] mb-6">
+          <h3 className="text-2xl font-bold text-[#00D8FE] mb-6 tracking-tight">
             Drop A Line
           </h3>
           <div className="space-y-5">
@@ -132,7 +130,7 @@ export default function ContactPage() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-3 rounded-md font-semibold bg-[#00D8FE] text-black transition-all duration-300"
+              className="w-full py-3 rounded-md font-semibold bg-[#00D8FE] text-black transition-all duration-300 hover:bg-[#00bfe4]"
             >
               Send Message
             </motion.button>

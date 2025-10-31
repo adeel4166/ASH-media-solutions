@@ -6,7 +6,7 @@ import Footer from "@/app/components/Footer";
 import { useEffect, useRef, useState } from "react";
 
 export default function AboutPage() {
-  // 👇 Counter animation hook
+  // ✅ Counter animation hook
   const Counter = ({ target, label, delay = 0 }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
@@ -40,7 +40,7 @@ export default function AboutPage() {
         viewport={{ once: true }}
         className="m-4 text-center"
       >
-        <h3 className="text-4xl font-bold text-[#00D8FE]">
+        <h3 className="text-4xl font-bold text-[#00D8FE] tracking-tight">
           {value}
           <span className="text-[#00D8FE]">+</span>
         </h3>
@@ -50,27 +50,22 @@ export default function AboutPage() {
   };
 
   return (
-    <main className="bg-[#071414] text-gray-300 transition-colors duration-500 min-h-screen font-[Poppins]">
+    <main className="bg-[#071414] text-gray-300 transition-colors duration-500 min-h-screen font-sans">
       <Navbar />
 
-      {/* 🌄 HERO SECTION */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/about/hero.jpg"
-          alt="About ASH Media Solutions"
-          fill
-          className="object-cover opacity-60"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#071414]/80" />
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-5xl md:text-6xl font-[Amsterdam4] text-[#00D8FE]"
-        >
-          About Us
-        </motion.h1>
+      {/* 🌄 HERO SECTION — Fully visible image (no crop / no zoom) */}
+      <section className="relative flex items-center justify-center overflow-hidden border-b border-[#00444F]/40 bg-black">
+        <div className="relative w-full h-[70vh] flex items-center justify-center">
+          <Image
+            src="/about2.jpg"
+            alt="About ASH Media Solutions"
+            fill
+            // ✅ Auto adjust: contain on mobile, cover on larger screens
+            className="object-contain md:object-cover md:object-center transition-none"
+            priority
+          />
+        </div>
+        
       </section>
 
       {/* 💼 BUSINESS GOALS SECTION */}
@@ -81,10 +76,10 @@ export default function AboutPage() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-[Amsterdam4] text-[#00D8FE] mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#00D8FE] mb-5 tracking-tight">
             Realize Your Business Goals for Maximum Profit
           </h2>
-          <p className="text-gray-400 leading-relaxed">
+          <p className="text-gray-400 text-[17px] leading-relaxed">
             We develop and execute strategic digital marketing plans aligned
             with your business goals — boosting growth, improving efficiency,
             and maximizing ROI.
@@ -99,7 +94,7 @@ export default function AboutPage() {
           className="relative rounded-3xl overflow-hidden"
         >
           <Image
-            src="/about/team.jpg"
+            src="/team.jpg"
             alt="Team collaboration"
             width={700}
             height={500}
@@ -108,7 +103,7 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* 📊 COUNTER SECTION (Animated) */}
+      {/* 📊 COUNTER SECTION */}
       <section className="bg-[#041010] border-t border-[#00444F]/30 py-16 flex flex-wrap justify-around text-center">
         <Counter target={140} label="Happy Customers" />
         <Counter target={150} label="Trusted Users" delay={0.1} />
@@ -118,7 +113,7 @@ export default function AboutPage() {
 
       {/* 🎥 WHY WE’RE BEST SECTION */}
       <section className="max-w-7xl mx-auto py-24 px-6 grid md:grid-cols-2 gap-12 items-center">
-        {/* LEFT — IMAGE OR VIDEO */}
+        {/* LEFT — IMAGE */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -139,8 +134,7 @@ export default function AboutPage() {
             className="absolute inset-0 flex items-center justify-center"
           >
             <button
-              className="w-16 h-16 bg-[#00D8FE] text-black text-3xl rounded-full 
-                         flex items-center justify-center"
+              className="w-16 h-16 bg-[#00D8FE] text-black text-3xl rounded-full flex items-center justify-center"
             >
               ▶
             </button>
@@ -154,10 +148,10 @@ export default function AboutPage() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-[Amsterdam4] text-[#00D8FE] mb-5">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#00D8FE] mb-5 tracking-tight">
             Why We’re the Best Digital Marketing Agency in Lahore
           </h2>
-          <p className="text-gray-400 leading-relaxed">
+          <p className="text-gray-400 text-[17px] leading-relaxed">
             We stand out by combining innovative digital marketing strategies,
             data-driven insights, and personalized campaigns — delivering
             unmatched ROI and sustainable brand growth.

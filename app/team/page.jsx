@@ -6,36 +6,32 @@ import Footer from "@/app/components/Footer";
 
 export default function TeamPage() {
   const team = [
-    { name: "Javed Iqbal", role: "Managing Director", img: "/team/javed.jpg" },
-    { name: "Muhammad Ali", role: "Manager", img: "/team/ali.jpg" },
-    { name: "Faisal Iftikhar", role: "Senior Graphic Designer", img: "/team/faisal.jpg" },
-    { name: "Hassan Raza", role: "Content Strategist", img: "/team/hassan.jpg" },
-    { name: "Taimoor Malik", role: "Marketing Executive", img: "/team/taimoor.jpg" },
-    { name: "Maha Fatima", role: "Social Media Manager", img: "/team/maha.jpg" },
+    { name: "Areej Fatima", role: "Senior Graphic Designer", img: "/areej.jpeg" },
+    { name: "Shehryar Khan", role: "Senior Video Editor", img: "/shery.jpeg" },
+    { name: "Aftab Ahmed", role: "Senior Project Manager", img: "/aftab.jpeg" },
+    { name: "Umair Tahir", role: "Video Editor", img: "/umair.jpeg" },
+    { name: "Ahtesham-ul-Haq", role: "Social Media Manager", img: "/shami.jpeg" },
+    { name: "Adeel Ahmad", role: "Web Developer", img: "/adeel1.jpeg" },
   ];
 
   return (
-    <main className="bg-[#071414] text-gray-300 min-h-screen transition-colors duration-500 font-[Poppins]">
+    <main className="bg-[#071414] text-gray-300 min-h-screen font-sans">
       <Navbar />
 
-      {/* 🌄 HERO SECTION */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/adeel.jpg"
-          alt="Our Team"
-          fill
-          className="object-cover opacity-70"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#071414]/85" />
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="relative z-10 text-5xl md:text-6xl font-[Amsterdam4] text-[#00D8FE]"
-        >
-          Our Team
-        </motion.h1>
+      {/* 🌄 HERO SECTION — Fixed (no auto zoom or crop) */}
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden border-b border-[#00444F]/40">
+        <div className="absolute inset-0">
+          <Image
+            src="/team1.jpg"
+            alt="Our Team"
+            fill
+            sizes="100vw"
+            priority
+            className="w-full h-full object-center sm:object-cover object-contain transition-none"
+          />
+        </div>
+
+       
       </section>
 
       {/* 👥 TEAM SECTION */}
@@ -48,12 +44,14 @@ export default function TeamPage() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-4xl md:text-5xl font-[Amsterdam4] text-[#00D8FE] mb-3">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#00D8FE] mb-3">
             Meet Our Professionals
           </h2>
-          <p className="text-gray-400">
+          <p className="text-gray-400 text-[17px] leading-relaxed">
             The creative individuals driving success at{" "}
-            <span className="text-[#00D8FE] font-medium">ASH Media Solutions</span>.
+            <span className="text-[#00D8FE] font-semibold">
+              ASH Media Solutions
+            </span>.
           </p>
         </motion.div>
 
@@ -67,50 +65,30 @@ export default function TeamPage() {
               transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.03, y: -5 }}
-              className="rounded-xl border border-[#00444F]/40 bg-[#041010]
-                         overflow-hidden transition-all duration-300"
+              className="rounded-xl border border-[#00444F]/40 bg-[#041010] overflow-hidden transition-all duration-300 hover:shadow-[0_0_15px_#00D8FE33]"
             >
               {/* IMAGE SECTION */}
-              <div className="relative w-full h-[400px] overflow-hidden">
-                <motion.div
-                  initial={{ scale: 1 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full h-full"
-                >
+              <div className="relative w-full h-[400px] overflow-hidden group">
+                <div className="w-full h-full transition-transform duration-500 group-hover:scale-105">
                   <Image
                     src={member.img}
                     alt={member.name}
-                    width={500}
-                    height={400}
-                    className="object-cover w-full h-full"
+                    width={600}
+                    height={800}
+                    className="object-cover object-top w-full h-full"
                   />
-                </motion.div>
-
-                {/* MEMBER NAME */}
-                <motion.h3
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="absolute bottom-[70px] left-1/2 -translate-x-1/2 text-white text-xl font-semibold"
-                >
-                  {member.name}
-                </motion.h3>
+                </div>
               </div>
 
-              {/* ROLE BAR */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-[#00D8FE] py-4 text-center"
-              >
-                <p className="text-black text-base font-semibold tracking-wide">
+              {/* BOX BELOW IMAGE */}
+              <div className="bg-[#0C1C1C] py-5 text-center border-t border-[#00444F]/40">
+                <h3 className="text-[#00D8FE] text-xl font-bold mb-1 tracking-tight">
+                  {member.name}
+                </h3>
+                <p className="text-gray-400 text-sm font-medium uppercase tracking-wide">
                   {member.role}
                 </p>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>

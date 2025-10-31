@@ -2,44 +2,40 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  FaServicestack,
-  FaBlog,
-  FaInfoCircle,
-  FaUsers,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaServicestack, FaInfoCircle, FaUsers, FaPhoneAlt } from "react-icons/fa";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
     { name: "Services", href: "/services", icon: <FaServicestack /> },
-
     { name: "About Us", href: "/about", icon: <FaInfoCircle /> },
     { name: "Our Team", href: "/team", icon: <FaUsers /> },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0A1818] shadow-lg font-[Poppins] h-[90px]">
-      <nav className="max-w-7xl mx-auto h-full flex items-center justify-between px-8 sm:px-10">
+    <header className="sticky top-0 z-50 bg-[#0A1818]/95 backdrop-blur-sm shadow-md font-sans h-[90px] transition-all duration-300">
+      <nav className="max-w-7xl mx-auto h-full flex items-center justify-between px-6 sm:px-10">
         
-        {/* ✅ Logo (slightly wider, height locked) */}
-        <Link href="/" className="flex items-center h-full">
+        {/* ✅ Logo */}
+        <Link
+          href="/"
+          className="flex items-center h-full md:ml-6 lg:ml-10 transition-all duration-300"
+        >
           <div className="h-[55px] flex items-center">
             <Image
               src="/thursday.png"
               alt="ASH Media Solutions Logo"
-              width={170}          // 🔹 Increased width from 140 → 170
+              width={170}
               height={45}
-              className="object-contain w-auto max-h-[550px]"
+              className="object-contain w-[250px] max-h-[550px]"
               priority
             />
           </div>
         </Link>
 
-        {/* ✅ Center Menu */}
-        <div className="hidden md:flex items-center justify-center flex-1 gap-10 lg:gap-14 text-[16px] lg:text-[17px] font-semibold text-white">
+        {/* ✅ Center Menu (Desktop) */}
+        <div className="hidden md:flex items-center justify-center flex-1 gap-10 lg:gap-14 text-[16px] lg:text-[17px] font-semibold text-white tracking-tight">
           {links.map((link) => (
             <Link
               key={link.name}
@@ -51,12 +47,13 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* ✅ Button */}
+        {/* ✅ Contact Button (with icon) */}
         <Link
           href="/contact"
-          className="hidden md:inline-flex items-center rounded-[18px] px-6 lg:px-8 py-2 font-semibold text-[15px] lg:text-[16px]
+          className="hidden md:inline-flex items-center gap-2 rounded-full px-6 lg:px-4 py-3 font-semibold text-[15px] lg:text-[16px]
                      bg-[#00D8FE] text-black hover:bg-[#00bfe4] transition-all duration-300 shadow-sm"
         >
+          <FaPhoneAlt className="text-[16px]" />
           Contact Us
         </Link>
 
@@ -85,11 +82,13 @@ export default function Navbar() {
             </Link>
           ))}
 
+          {/* ✅ Mobile “Contact Us” Button with Icon */}
           <Link
             href="/contact"
             onClick={() => setMenuOpen(false)}
-            className="bg-[#00D8FE] text-black px-8 py-2.5 rounded-[18px] font-medium text-[16px] hover:bg-[#00bfe4] transition-all duration-300"
+            className="flex items-center gap-2 bg-[#00D8FE] text-black px-8 py-2.5 rounded-full font-semibold text-[16px] hover:bg-[#00bfe4] transition-all duration-300"
           >
+            <FaPhoneAlt className="text-[17px]" />
             Contact Us
           </Link>
         </div>

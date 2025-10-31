@@ -22,24 +22,24 @@ const logos = [
 
 export default function OurClients() {
   return (
-    <section className="py-20 bg-[#071414] relative overflow-hidden">
+    <section className="py-20 bg-[#071414] relative overflow-hidden font-sans">
       {/* ✅ Heading */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#00D8FE]">
+      <div className="text-center mb-12 px-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#00D8FE] leading-snug tracking-tight">
           Our Clients
         </h2>
-        <p className="text-gray-400 mt-2">
+        <p className="text-gray-300 mt-3 text-[16px] md:text-[17px] leading-relaxed">
           Trusted by industry leaders and growing brands worldwide.
         </p>
       </div>
 
-      {/* ✅ Smooth Scrolling Logos */}
+      {/* ✅ Smooth Infinite Logo Scroll */}
       <div className="relative w-full overflow-hidden">
         <motion.div
           className="flex gap-20 items-center"
           animate={{ x: ["0%", "-100%"] }}
           transition={{
-            duration: 30,
+            duration: 35,
             ease: "linear",
             repeat: Infinity,
           }}
@@ -47,16 +47,16 @@ export default function OurClients() {
           {[...logos, ...logos].map((logo, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-40 md:w-48 lg:w-52 flex items-center justify-center p-4
+              className="flex-shrink-0 w-36 md:w-44 lg:w-52 flex items-center justify-center p-4
                          bg-transparent hover:scale-105 transition-transform duration-300"
             >
-              <div className="relative w-full h-24 md:h-28">
+              <div className="relative w-full h-20 md:h-24">
                 <Image
                   src={logo}
                   alt={`Client logo ${i}`}
                   fill
                   sizes="(max-width: 768px) 100px, 200px"
-                  className="object-contain opacity-80 hover:opacity-100 transition-all duration-300"
+                  className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             </div>
@@ -64,8 +64,8 @@ export default function OurClients() {
         </motion.div>
       </div>
 
-      {/* ✅ Divider line (soft, theme-based) */}
-      <div className="mt-16 h-[1px] w-full bg-[#00D8FE]/15"></div>
+      {/* ✅ Divider Line */}
+      <div className="mt-16 h-[1px] w-full bg-[#00D8FE]/20"></div>
     </section>
   );
 }
