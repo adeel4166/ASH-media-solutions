@@ -7,11 +7,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Custom Font: Amsterdam 4 */
-@font-face {
-  font-family: "Amsterdam4";
-  src: url("/fonts/Amsterdam4.ttf") format("truetype");
-  font-display: swap;
-}
 
 /* ===============================
    COLOR VARIABLES
@@ -37,17 +32,16 @@ html, body {
 /* ===============================
    TYPOGRAPHY
 ================================= */
-h1, h2, h3 {
-  font-family: 'Anton', sans-serif;
-  color: var(--primary);
-  letter-spacing: 0.5px;
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
 }
 
 .hero-title {
-  font-family: 'Amsterdam4', cursive;
-  color: var(--primary);
+  font-family: 'Anton', sans-serif;
   letter-spacing: 1px;
 }
+
 
 /* ===============================
    UTILITIES
